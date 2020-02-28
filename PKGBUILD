@@ -1,40 +1,28 @@
-# Contributor: SanskritFritz (gmail)
-# Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
-# Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-git
-pkgver=r4819.82af2726
+pkgver=99999.4.1.0
 pkgrel=1
-epoch=1
-pkgdesc="Clipboard manager with searchable and editable history."
-url="https://github.com/amosbird/CopyQ"
-arch=('i686' 'x86_64')
+pkgdesc="Clipboard manager with searchable and editable history"
+url="https://github.com/hluk/${pkgname}"
+depends=('hicolor-icon-theme' 'qt5-svg' 'qt5-wayland' 'knotifications')
+makedepends=('extra-cmake-modules' 'qt5-tools')
 license=('GPL3')
-depends=('hicolor-icon-theme' 'libxtst' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'desktop-file-utils')
-makedepends=('git' 'cmake' 'qt5-tools')
-optdepends=('copyq-plugin-itemweb-git')
+arch=('x86_64')
 provides=('copyq')
 conflicts=('copyq')
 source=("$pkgname::git+https://github.com/amosbird/CopyQ.git")
 md5sums=('SKIP')
-install=
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
-  cd "$srcdir/$pkgname"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_WEBKIT=0 \
-        -DWITH_QT5=TRUE $srcdir/$pkgname
-  make
+    cmake -B build -S copyq-git \
+      -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
-  make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" cmake --install build
 }
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "99999.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
