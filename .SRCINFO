@@ -1,6 +1,6 @@
 pkgbase = copyq-git
 	pkgdesc = Clipboard manager with searchable and editable history.
-	pkgver = r4819.82af2726
+	pkgver = r99999.4828.a6a65081
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/amosbird/CopyQ

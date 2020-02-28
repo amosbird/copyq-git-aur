@@ -2,7 +2,7 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-git
-pkgver=r4819.82af2726
+pkgver=r99999.4828.a6a65081
 pkgrel=1
 epoch=1
 pkgdesc="Clipboard manager with searchable and editable history."
@@ -20,7 +20,7 @@ install=
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r99999.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
