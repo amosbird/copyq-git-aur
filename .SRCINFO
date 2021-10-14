@@ -11,7 +11,7 @@ pkgbase = copyq-git
 	depends = qt5-svg
 	depends = qt5-wayland
 	depends = knotifications
-	provides = copyq
+	provides = copyq=99999.4.1.0-1
 	conflicts = copyq
 	source = copyq-git::git+https://github.com/amosbird/CopyQ.git
 	md5sums = SKIP
